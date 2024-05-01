@@ -10,7 +10,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint:ts": "npx eslint \"**/*.{ts,tsx}\" --max-warnings=10 --color",
+    "lint:ts": "npx eslint \"**/*.{ts,tsx}\" --max-warnings=10 --color"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
