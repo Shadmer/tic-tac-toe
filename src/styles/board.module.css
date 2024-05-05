@@ -1,0 +1,7 @@
+.board {
+    color: #000;
+}
+
+.switch input {
+    cursor: pointer;
+}
