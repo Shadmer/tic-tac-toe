@@ -1,13 +1,18 @@
 {
   "files": {
-    "main.css": "/tic-tac-toe/static/css/main.c0199af7.css",
-    "main.js": "/tic-tac-toe/static/js/main.5ed8a8ea.js",
+    "main.css": "/tic-tac-toe/static/css/main.8da75014.css",
+    "main.js": "/tic-tac-toe/static/js/main.18672920.js",
+    "static/media/layer-3.png": "/tic-tac-toe/static/media/layer-3.d1592ad46c303da5d1c3.png",
+    "static/media/layer-2.png": "/tic-tac-toe/static/media/layer-2.0b02f32075cb978bf362.png",
+    "static/media/layer-1.png": "/tic-tac-toe/static/media/layer-1.57a7cccd12df2ec81db2.png",
+    "static/media/ofont.ru_InkVerse.ttf": "/tic-tac-toe/static/media/ofont.ru_InkVerse.30b8dc264af0c3a977ea.ttf",
+    "static/media/layer-4.jpg": "/tic-tac-toe/static/media/layer-4.f6d246477a9de2025605.jpg",
     "index.html": "/tic-tac-toe/index.html",
-    "main.c0199af7.css.map": "/tic-tac-toe/static/css/main.c0199af7.css.map",
-    "main.5ed8a8ea.js.map": "/tic-tac-toe/static/js/main.5ed8a8ea.js.map"
+    "main.8da75014.css.map": "/tic-tac-toe/static/css/main.8da75014.css.map",
+    "main.18672920.js.map": "/tic-tac-toe/static/js/main.18672920.js.map"
   },
   "entrypoints": [
-    "static/css/main.c0199af7.css",
-    "static/js/main.5ed8a8ea.js"
+    "static/css/main.8da75014.css",
+    "static/js/main.18672920.js"
   ]
 }
