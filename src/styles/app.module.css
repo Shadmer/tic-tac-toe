@@ -1,26 +1,5 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --index: calc(1vw + 1vh);
-}
-
-@font-face {
-    font-family: kamerik-k;
-    src: url('./assets/fonts/kamerik205-heavy.woff2');
-}
-
-body {
-    font-family: kamerik-k;
-    color: #fff;
-    overflow-x: hidden;
-}
-
 .scene {
-    height: 550vh;
+    height: 450vh;
 }
 
 .layer {
@@ -35,7 +14,7 @@ body {
     animation-timeline: scroll();
     animation-timing-function: linear;
     animation-fill-mode: both;
-    animation-range: 0 300vh;
+    animation-range: 0 400vh;
 }
 
 .layer:nth-child(1) { animation-name: animation-1; }
@@ -58,27 +37,28 @@ body {
 @keyframes animation-end { to { opacity: 1; } }
 
 .layer__content {
-    padding: 5vh 5vw;
+    padding: 4vh 4vw;
+    background: none;
     backdrop-filter: blur(25px) brightness(.98);
     animation-timeline: scroll();
     animation-timing-function: linear;
     animation-fill-mode: both;
-    animation-range: 0 50vh;
+    animation-range: 0 100vh;
     animation-name: animation-head
 }
 @keyframes animation-head { to { opacity: 0; filter: blur(25px); } }
 
 .layer__content h1 {
     text-transform: uppercase;
-    font-size: calc(var(--index) * 4.5);
+    font-size: calc(var(--index) * 2.5);
     text-align: center;
     line-height: .9em;
-    letter-spacing: -.15vw;
+    letter-spacing: .15vw;
+    font-family: ofont;
 }
 
-.layer__end h3 {
-    position: relative;
-    font-size: 4rem;
+.layer__end {
+    padding: 20px;
 }
 
 .layer__end::before {
@@ -90,7 +70,11 @@ body {
     animation-timeline: scroll();
     animation-timing-function: linear;
     animation-fill-mode: both;
-    animation-range: 300vh 450vh;
+    animation-range: 200vh 400vh;
     animation-name: animation-bg;
 }
 @keyframes animation-bg { to { opacity: 1; } }
+
+.layer__board {
+    position: relative;
+}

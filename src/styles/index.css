@@ -1,0 +1,14 @@
+:root {
+  --index: calc(1vw + 1vh);
+}
+
+@font-face {
+  font-family: ofont;
+  src: url('../assets/fonts/ofont.ru_InkVerse.ttf');
+}
+
+body {
+  font-family: ofont;
+  color: #fff;
+  overflow-x: hidden;
+}
