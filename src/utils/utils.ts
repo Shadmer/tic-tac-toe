@@ -1,5 +1,24 @@
 import { SquareType } from '../components/types';
 
+export const getRandomColor = () => {
+    const colors = [
+        'gray',
+        'red',
+        'pink',
+        'grape',
+        'violet',
+        'indigo',
+        'blue',
+        'cyan',
+        'teal',
+        'green',
+        'lime',
+        'yellow',
+        'orange',
+    ];
+    return colors[Math.floor(Math.random() * colors.length)];
+};
+
 export const calculateWinner = (
     squares: SquareType[],
     setWinningCombination: React.Dispatch<React.SetStateAction<number[] | null>>

@@ -18,7 +18,12 @@ import { Square } from './Square';
 import { SquareType } from './types';
 
 import classes from '../styles/board.module.css';
-import { calculateBotMove, calculateWinner } from '../utils/utils';
+import {
+    calculateBotMove,
+    calculateWinner,
+    getRandomColor,
+} from '../utils/utils';
+import { Timer } from './Timer';
 
 export const Board = () => {
     const defaultSquares: SquareType[] = Array(9).fill(null);
@@ -38,25 +43,7 @@ export const Board = () => {
     const [winningCombination, setWinningCombination] = React.useState<
         number[] | null
     >(null);
-
-    const getRandomColor = React.useCallback(() => {
-        const colors = [
-            'gray',
-            'red',
-            'pink',
-            'grape',
-            'violet',
-            'indigo',
-            'blue',
-            'cyan',
-            'teal',
-            'green',
-            'lime',
-            'yellow',
-            'orange',
-        ];
-        return colors[Math.floor(Math.random() * colors.length)];
-    }, []);
+    const [isTimer, setIsTimer] = React.useState(true);
 
     const oldestMove = React.useMemo(
         () => moves.length > 5 && moves[0],
@@ -80,7 +67,7 @@ export const Board = () => {
             deg: Math.floor(Math.random() * 360),
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [getRandomColor, resetFlag]);
+    }, [resetFlag]);
 
     const makeMove = React.useCallback(
         (move: number) => {
@@ -155,9 +142,16 @@ export const Board = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isBotGame, isBotFirst, botLevel]);
 
+    const [timerDuration, setTimerDuration] = React.useState(5000);
+    const handleStart = () => {
+        console.log('Countdown started from parent component!');
+        // Здесь вы можете выполнить любые действия, которые нужны вам при старте таймера
+    };
+
     return (
-        <Paper className={classes.board} radius="md" p="xl">
+        <Paper radius="md" p="xl">
             <Stack>
+                <button onClick={handleStart}>timer start</button>
                 <Button
                     color={gradient.from}
                     size="xl"
@@ -166,6 +160,27 @@ export const Board = () => {
                 >
                     Новая игра
                 </Button>
+
+                <Box
+                    className={`${isBotGame ? classes.visible : classes.hidden}`}
+                >
+                    <Text c={gradient.from}>Уровень бота: {botLevel}</Text>
+                    <Slider
+                        color={gradient.to}
+                        marks={difficultyLevels}
+                        label={(val) =>
+                            difficultyLevels.find(
+                                (level) => level.value === val
+                            )?.label ?? ''
+                        }
+                        step={1}
+                        min={1}
+                        max={3}
+                        value={botLevel}
+                        onChange={setBotLevel}
+                        styles={{ markLabel: { display: 'none' } }}
+                    ></Slider>
+                </Box>
 
                 <Group justify="space-between" gap="sm">
                     <Switch
@@ -179,7 +194,9 @@ export const Board = () => {
                         onChange={(e) => setIsBotGame(e.currentTarget.checked)}
                     />
 
-                    {isBotGame && (
+                    <Box
+                        className={`${isBotGame ? classes.visible : classes.hidden}`}
+                    >
                         <Chip
                             radius="xs"
                             color={gradient.to}
@@ -188,30 +205,17 @@ export const Board = () => {
                         >
                             Бот первый
                         </Chip>
-                    )}
-                </Group>
-
-                {isBotGame && (
-                    <Box>
-                        <Text c={gradient.from}>Уровень бота: {botLevel}</Text>
-                        <Slider
-                            color={gradient.to}
-                            marks={difficultyLevels}
-                            label={(val) =>
-                                difficultyLevels.find(
-                                    (level) => level.value === val
-                                )?.label ?? ''
-                            }
-                            step={1}
-                            min={1}
-                            max={3}
-                            value={botLevel}
-                            onChange={setBotLevel}
-                            styles={{ markLabel: { display: 'none' } }}
-                        ></Slider>
                     </Box>
-                )}
 
+                    <Chip
+                        radius="xs"
+                        color={gradient.to}
+                        checked={isTimer}
+                        onChange={() => setIsTimer((v) => !v)}
+                    >
+                        Таймер
+                    </Chip>
+                </Group>
                 <Paper withBorder p="xs">
                     <AspectRatio>
                         <SimpleGrid cols={3}>
@@ -233,6 +237,15 @@ export const Board = () => {
                         </SimpleGrid>
                     </AspectRatio>
                 </Paper>
+
+                <Box
+                    className={`${isTimer ? classes.visible : classes.hidden}`}
+                >
+                    <Timer
+                        initialDuration={timerDuration}
+                        color={gradient.to}
+                    />
+                </Box>
 
                 <Text c={gradient.from}>{status}</Text>
             </Stack>

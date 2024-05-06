@@ -1,7 +1,9 @@
-.board {
-    color: #000;
+.visible {
+    opacity: 1;
+    transition: .3s;
 }
 
-.switch input {
-    cursor: pointer;
+.hidden {
+    opacity: 0;
+    transition: .3s;
 }
