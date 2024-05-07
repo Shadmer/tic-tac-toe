@@ -24,6 +24,7 @@ const App = () => {
                     <Title>Мерцающие</Title>
                     <Space />
                     <Title>крестики-нолики</Title>
+                    <Box className={classes.arrow_down}></Box>
                 </Box>
             </Box>
             <Box
