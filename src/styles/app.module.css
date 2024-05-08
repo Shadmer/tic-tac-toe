@@ -94,12 +94,12 @@
     height: 100%;
     border-left: 14px solid #fff;
     border-bottom: 14px solid #fff;
-    animation: arrow-8 3s linear infinite;
+    animation: arrow 3s linear infinite;
 }
 .arrow_down:after {
-    animation: arrow-8 3s linear infinite -1.5s;
+    animation: arrow 3s linear infinite -1.5s;
 }
-@keyframes arrow-8 {
+@keyframes arrow {
     0% {
         opacity: 0;
         transform: translate(0, -53px) rotate(-45deg);

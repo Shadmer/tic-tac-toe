@@ -35,6 +35,7 @@ export const Board = () => {
         { value: 1, label: 'Простак' },
         { value: 2, label: 'Любитель' },
         { value: 3, label: 'Савант' },
+        { value: 4, label: 'Задрот' },
     ];
 
     const [duration, setDuration] =
@@ -43,7 +44,7 @@ export const Board = () => {
     const [isBotGame, setIsBotGame] = React.useState(false);
     const [isBotTurn, setIsBotTurn] = React.useState(false);
     const [isBotFirst, setIsBotFirst] = React.useState(false);
-    const [isTimer, setIsTimer] = React.useState(true);
+    const [isTimer, setIsTimer] = React.useState(false);
     const [botLevel, setBotLevel] = React.useState(2);
     const [xIsNext, setXIsNext] = React.useState(true);
     const [squares, setSquares] = React.useState<SquareType[]>(defaultSquares);
@@ -142,7 +143,6 @@ export const Board = () => {
 
             nextSquares[move] = xIsNext ? 'x' : 'o';
             nextMoves.push(move);
-
             if (nextMoves.length > 6) {
                 const oldestMove = nextMoves.shift();
                 nextSquares[oldestMove ?? -1] = null;
@@ -232,7 +232,7 @@ export const Board = () => {
     const sliderRangeTimer = (
         <RangeSlider
             color={gradient.to}
-            minRange={1000}
+            minRange={500}
             min={1000}
             max={5000}
             step={500}
@@ -243,7 +243,7 @@ export const Board = () => {
     );
 
     return (
-        <Paper radius="md" p="xl">
+        <Paper radius="md" p="md">
             <Stack>
                 <Button
                     color={gradient.from}
@@ -268,7 +268,7 @@ export const Board = () => {
                         }
                         step={1}
                         min={1}
-                        max={3}
+                        max={difficultyLevels.length}
                         value={botLevel}
                         onChange={setBotLevel}
                         styles={{ markLabel: { display: 'none' } }}

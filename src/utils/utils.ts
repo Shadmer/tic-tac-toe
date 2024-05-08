@@ -62,14 +62,10 @@ export const calculateBotMove = (
         (index) => squares[index] === null
     );
 
-    if (botLevel > 2) {
-        if (moves.length === 0) {
-            return 4;
-        }
+    if (botLevel > 3) {
+        if (moves.length === 0) return 4;
 
-        if (moves.length === 1 && squares[4] === null) {
-            return 4;
-        }
+        if (moves.length === 1 && squares[4] === null) return 4;
 
         if (moves.length === 1 && availableDiagonalMoves.length) {
             return availableDiagonalMoves[
@@ -88,11 +84,30 @@ export const calculateBotMove = (
         for (let i = 0; i < 9; i++) {
             if (squares[i] === null) {
                 const nextSquares = squares.slice();
+                const nextBlinkingSquares = squares.slice();
+
+                if (moves.length > 5) {
+                    const oldestMove = moves[0];
+                    nextBlinkingSquares[oldestMove] = null;
+                }
+
                 nextSquares[i] = botSymbol;
-                if (
+                nextBlinkingSquares[i] = botSymbol;
+
+                const isStandardWin =
                     calculateWinner(nextSquares, setWinningCombination) ===
-                    botSymbol
-                ) {
+                    botSymbol;
+                const isBlinkingWin =
+                    calculateWinner(
+                        nextBlinkingSquares,
+                        setWinningCombination
+                    ) === botSymbol;
+                const isWin =
+                    botLevel > 2
+                        ? isStandardWin && isBlinkingWin
+                        : isStandardWin;
+
+                if (isWin) {
                     return i;
                 }
             }
@@ -101,45 +116,39 @@ export const calculateBotMove = (
         for (let i = 0; i < 9; i++) {
             if (squares[i] === null) {
                 const nextSquares = squares.slice();
+                const nextBlinkingSquares = squares.slice();
+
+                if (moves.length > 5) {
+                    const oldestMove = moves[0];
+                    nextBlinkingSquares[oldestMove] = null;
+                }
                 nextSquares[i] = humanSymbol;
-                if (
+                nextBlinkingSquares[i] = humanSymbol;
+
+                const isStandardLose =
                     calculateWinner(nextSquares, setWinningCombination) ===
-                    humanSymbol
-                ) {
+                    humanSymbol;
+                const isBlinkingLose =
+                    calculateWinner(
+                        nextBlinkingSquares,
+                        setWinningCombination
+                    ) === humanSymbol;
+                const isLose =
+                    botLevel > 2
+                        ? isStandardLose && isBlinkingLose
+                        : isStandardLose;
+
+                if (isLose) {
                     return i;
                 }
             }
         }
     }
-
-    if (botLevel > 2 && moves.length === 4) {
-        const adjacentCells = {
-            0: [1, 3],
-            2: [1, 5],
-            6: [3, 7],
-            8: [5, 7],
-        };
-
-        for (let i = 0; i < availableDiagonalMoves.length; i++) {
-            const diagonalCell = availableDiagonalMoves[
-                i
-            ] as keyof typeof adjacentCells;
-            const adjacentCellsIndices = adjacentCells[diagonalCell];
-            const [adjacentCell1, adjacentCell2] = adjacentCellsIndices;
-
-            if (
-                squares[adjacentCell1] === null &&
-                squares[adjacentCell2] === null
-            ) {
-                return diagonalCell;
-            }
-        }
-    }
-
     for (let i = 0; i < 9; i++) {
         if (squares[i] === null) {
             availableMoves.push(i);
         }
     }
+
     return availableMoves[Math.floor(Math.random() * availableMoves.length)];
 };
