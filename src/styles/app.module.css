@@ -9,7 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-position: center;
+    background-position: left 32% center;
     background-size: cover;
     animation-timeline: scroll();
     animation-timing-function: linear;
@@ -29,28 +29,29 @@
 .layer:nth-child(4) { animation-name: animation-4; }
 @keyframes animation-4 { to { scale: 2; } }
 
-.layer:nth-child(5) { 
+.layer:nth-child(5) {
     opacity: 0;
     animation-range: 250vh 300vh;
     animation-name: animation-end;
 }
-@keyframes animation-end { to { opacity: 1; } }
+@keyframes animation-end { to { opacity: 1;  } }
 
 .layer__content {
-    padding: 4vh 4vw;
+    padding: 3vh 3vw;
+    margin-top: 100px;
     background: none;
     backdrop-filter: blur(25px) brightness(.98);
     animation-timeline: scroll();
     animation-timing-function: linear;
     animation-fill-mode: both;
     animation-range: 0 100vh;
-    animation-name: animation-head
+    animation-name: animation-head;
 }
 @keyframes animation-head { to { opacity: 0; filter: blur(25px); } }
 
 .layer__content h1 {
     text-transform: uppercase;
-    font-size: calc(var(--index) * 2.5);
+    font-size: calc(var(--index) * 2);
     text-align: center;
     line-height: .9em;
     letter-spacing: .15vw;
@@ -77,13 +78,24 @@
 
 .layer__board {
     position: relative;
+    transform: translateY(9999px);
+    animation-timeline: scroll();
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-range: 200vh 201vh;
+    animation-name: animation-board;
 }
+@keyframes animation-board { to { transform: translateY(0px); } }
 
 .arrow_down {
     position: relative;
-    width: 50px;
-    height: 50px;
+    /* width: 50px; */
+    width: calc(var(--index) * 1.5);
+    /* height: 50px; */
+    height: calc(var(--index) * 1.5);
     margin: 30px auto 40px auto;
+    cursor: pointer;
+    z-index: 1000;
 }
 .arrow_down:before,
 .arrow_down:after {
@@ -92,8 +104,8 @@
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    border-left: 14px solid #fff;
-    border-bottom: 14px solid #fff;
+    border-left: calc(var(--index) * .5) solid #fff;
+    border-bottom: calc(var(--index) * .5) solid #fff;
     animation: arrow 3s linear infinite;
 }
 .arrow_down:after {
@@ -102,7 +114,7 @@
 @keyframes arrow {
     0% {
         opacity: 0;
-        transform: translate(0, -53px) rotate(-45deg);
+        transform: translate(0, calc(var(--index) * -1.5)) rotate(-45deg);
     }
     10%, 90% {
         opacity: 0;
@@ -113,6 +125,6 @@
     }
     100% {
         opacity: 0;
-        transform: translate(0, 53px) rotate(-45deg);
+        transform: translate(0, calc(var(--index) * 1.5)) rotate(-45deg);
     }
 }

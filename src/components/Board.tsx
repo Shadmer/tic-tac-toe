@@ -232,7 +232,7 @@ export const Board = () => {
     const sliderRangeTimer = (
         <RangeSlider
             color={gradient.to}
-            minRange={500}
+            minRange={0}
             min={1000}
             max={5000}
             step={500}
