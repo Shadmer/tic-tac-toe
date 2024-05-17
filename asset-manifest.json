@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/tic-tac-toe/static/css/main.332e707c.css",
-    "main.js": "/tic-tac-toe/static/js/main.6bee9cfb.js",
-    "static/media/layer-2.png": "/tic-tac-toe/static/media/layer-2.d99ef9b4138fc7232f3b.png",
-    "static/media/layer-3.png": "/tic-tac-toe/static/media/layer-3.52fe2e5d16760f90d084.png",
+    "main.css": "/tic-tac-toe/static/css/main.3d81e9e4.css",
+    "main.js": "/tic-tac-toe/static/js/main.6600c0a7.js",
+    "static/media/layer-2.png": "/tic-tac-toe/static/media/layer-2.d8840759318b48118a38.png",
+    "static/media/layer-3.png": "/tic-tac-toe/static/media/layer-3.05d7b0ce113b98177b8b.png",
     "static/media/layer-4.jpg": "/tic-tac-toe/static/media/layer-4.85c68adf224cff3756e2.jpg",
     "static/media/ofont.ru_InkVerse.ttf": "/tic-tac-toe/static/media/ofont.ru_InkVerse.30b8dc264af0c3a977ea.ttf",
-    "static/media/layer-1.png": "/tic-tac-toe/static/media/layer-1.755175678433a4c87e7e.png",
+    "static/media/layer-1.png": "/tic-tac-toe/static/media/layer-1.96947c5075d540cb4b0e.png",
     "index.html": "/tic-tac-toe/index.html",
-    "main.332e707c.css.map": "/tic-tac-toe/static/css/main.332e707c.css.map",
-    "main.6bee9cfb.js.map": "/tic-tac-toe/static/js/main.6bee9cfb.js.map"
+    "main.3d81e9e4.css.map": "/tic-tac-toe/static/css/main.3d81e9e4.css.map",
+    "main.6600c0a7.js.map": "/tic-tac-toe/static/js/main.6600c0a7.js.map"
   },
   "entrypoints": [
-    "static/css/main.332e707c.css",
-    "static/js/main.6bee9cfb.js"
+    "static/css/main.3d81e9e4.css",
+    "static/js/main.6600c0a7.js"
   ]
 }
